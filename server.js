@@ -11,7 +11,6 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const dataService = require("./data-service.js");
-
 const data = dataService(mongoDBConnectionString);
 const app = express();
 

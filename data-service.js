@@ -18,7 +18,10 @@ module.exports = function(mongoDBConnectionString){
     return {
         connect: function(){
             return new Promise(function(resolve,reject){
-                let db = mongoose.createConnection(mongoDBConnectionString, { useNewUrlParser: true });
+                let db = mongoose.createConnection(
+                  "mongodb+srv://teamUser:wbvCgW4hgq5opznm@web422-yigbl.mongodb.net/teams-api-data?retryWrites=true",
+                  { useNewUrlParser: true }
+                );
                 
                 db.on('error', (err)=>{
                     reject(err);
@@ -292,7 +295,7 @@ module.exports = function(mongoDBConnectionString){
             return new Promise(function(resolve,reject){
 
                 Team.find()
-                //.sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/ 
+                .sort({}) //optional "sort" - https://docs.mongodb.com/manual/reference/operator/aggregation/sort/ 
                 .exec()
                 .then((teams) => {
                     resolve(teams);
